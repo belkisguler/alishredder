@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AliShredder Web</title>
+    <link rel="stylesheet" href="\static\styles\styles.css">
+    <script src="\static\assets\script.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="wrapper">
+          <div class="logo"><a href="http://alishredder.cibiv.univie.ac.at">AliShredder Web</a></div>
+          <div class="body-text">a software to measure phylogenetic quality</div>
+        </div>
+    </nav>
+
+    <div class="stApp">
+        <div class="container">
+            <div class="input-section">
+                <h3 for="file">
+                    <div><a href="{{ url_for('download_user_manual')}}" download="user_manual.pdf"><h4>User Manual Guide</h4></a></div>
+                    1. Upload your file to be analyzed | Allowed Formats: PHYLIP or FASTA
+                </h3>
+                <form action="/" method="post" enctype="multipart/form-data" class="form">
+                    <div class="upload-section">
+                        <div class="upload-box">
+                            <div class="inner-upload-box">Upload</div>
+                            <input type="file" id="file" name="file" class="file-input" accept=".fa, .faa, .fas, .fast, .fasta, .fna, .ph, .phy, .phylip" onchange="displayFileName()">
+                            <label for="file" class="file-label" id="fileLabel">Select Your File</label>
+                        </div>
+                        <div id="fileNameDisplay" class="file-name"></div>
+                    </div>
+    
+                    {% if error %}
+                        <div style="color: red; padding-top: 10px;">{{ error }}</div>
+                    {% endif %}
+
+                    <h3>2. Choose Your Analysis Options</h3>
+                    <div class="options-container">
+                        <div class="options-table">
+                            <h3>Windows Related Options:</h3>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="nw" name="nw" type="checkbox">
+                                            <label class="cbx" for="nw"><span>
+                                            <svg>
+                                            </svg></span><span>Summary on entire alignment only</span></label>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="ws" name="ws" type="checkbox" checked>
+                                            <label class="cbx" for="ws"><span>
+                                            <svg>
+                                            </svg></span><span>Window size (default: 200):</span></label>
+                                            <input type="number"  id="ws_input" name="ws_input" value="200" min="0" oninput="if(value < 0) value = ''"><br>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="ss" name="ss" type="checkbox" checked>
+                                            <label class="cbx" for="ss"><span>
+                                            <svg width="1.2vw" height="1vh">
+                                            </svg></span><span>Step size (default: 20):</span></label>
+                                            <input type="number" id="ss_input" name="ss_input" value="20" min="0" oninput="if(value < 0) value = ''"><br>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="start" name="start" type="checkbox" checked>
+                                            <label class="cbx" for="start"><span>
+                                            <svg width="12px" height="10px">
+                                            </svg></span><span>Start position (default: 1):</span></label>
+                                            <input type="number" id="start_input" name="start_input" value="1" min="1" oninput="if(value < 0) value = ''"><br>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="end" name="end" type="checkbox">
+                                            <label class="cbx" for="end"><span>
+                                            <svg width="12px" height="10px">
+                                            </svg></span><span>End position (default: number of sites):</span></label>
+                                            <input type="number" id="end_input" name="end_input" placeholder="Number of sites" min="0" oninput="autoCheckCheckbox(this, 'end')"><br>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="notrim" name="notrim" type="checkbox" onchange="handleCheckboxChange(this, 'trim')">
+                                            <label class="cbx" for="notrim"><span>
+                                            <svg width="12px" height="10px">
+                                            </svg></span><span>Allow window computation to expand outside of the start and end of subalignment</span></label>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="trim" name="trim" type="checkbox" onchange="handleCheckboxChange(this, 'notrim')">
+                                            <label class="cbx" for="trim"><span>
+                                            <svg width="12px" height="10px">
+                                            </svg></span><span>Computation on windows strictly between start and end of the subalignment</span></label>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="options-table">
+                            <h3>Statistics/Computation Options:</h3>
+                               
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="all" name="all" type="checkbox" checked>
+                                            <label class="cbx" for="all"><span>
+                                            <svg width="12px" height="10px">
+                                            </svg></span><span>Select all options below</span></label>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+
+                                        
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="pi" name="pi" type="checkbox">
+                                            <label class="cbx" for="pi"><span>
+                                            <svg width="12px" height="10px">
+                                            </svg></span><span>Compute the information type</span>
+                                            </label>
+                                            
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="ca" name="ca" type="checkbox">
+                                            <label class="cbx" for="ca"><span>
+                                            <svg width="12px" height="10px">
+                                            </svg></span><span>Completeness score for the alignment/windows</span></label>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+
+
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="cr" name="cr" type="checkbox">
+                                            <label class="cbx" for="cr"><span>
+                                            <svg width="12px" height="10px">
+                                            </svg></span><span>Completeness score for individual sequences</span></label>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="cc" name="cc" type="checkbox">
+                                            <label class="cbx" for="cc"><span>
+                                            <svg width="12px" height="10px">
+                                            </svg></span><span>Completeness score for individual sites</span></label>
+                                            <span class="info-icon">🛈 No visualization available, only a log file will be generated.</span>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="cp" name="cp" type="checkbox">
+                                            <label class="cbx" for="cp"><span>
+                                            <svg width="12px" height="10px">
+                                            </svg></span><span>Completeness score for individual patterns</span></label>
+                                            <span class="info-icon">🛈 No visualization available, only a log file will be generated.</span>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+
+                                        <div class="checkbox-wrapper-4">
+                                            <input class="inp-cbx" id="cij" name="cij" type="checkbox" onclick="showInputFields(this)">
+                                            <label class="cbx" for="cij"><span>
+                                            <svg width="12px" height="10px">
+                                            </svg></span><span>Completeness score for pairs of sequences</span></label>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+
+                                       
+                                        
+                                        <div class="checkbox-wrapper-4" id="iij_wrapper">
+                                            <input class="inp-cbx" id="iij" name="iij" type="checkbox">
+                                            <label class="cbx" for="iij"><span>
+                                            <svg width="12px" height="10px">
+                                            </svg></span><span>Incompleteness score for pair of sequences</span></label>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+
+                                        
+                                        
+                                        <div class="checkbox-wrapper-4" id="dij_wrapper">
+                                            <input class="inp-cbx" id="dij" name="dij" type="checkbox">
+                                            <label class="cbx" for="dij"><span>
+                                            <svg width="12px" height="10px">
+                                            </svg></span><span>P-distance for pair of sequences</span></label>
+                                            <svg class="inline-svg">
+                                                <symbol id="check-4" viewBox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+                                         
+
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <input type="submit" value="Submit">
+                </form>                    
+</body>
+</html>
+
+
+

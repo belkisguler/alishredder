@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="3"> <!-- Refresh page every 3 seconds -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/styles/styles.css">
+</head>
+<body>
+    <nav>
+        <div class="wrapper">
+            <div class="logo"><a href="http://alishredder.cibiv.univie.ac.at">AliShredder Web</a></div>
+            <div class="body-text">A software to measure phylogenetic quality</div>
+            <div class="nav-links"><li><a href="javascript:history.back()">Go Back</a></li></div>
+        </div>
+    </nav>
+
+    <div class="stApp">
+        <h2>Your data is currently being processed</h2>
+        <div class="container">
+            <p>Please be patient, this might take a while.</p>
+            <p>The data can be later obtained under this link: http://alishredder.cibiv.univie.ac.at/success/{{ unique_identifier }}</p>
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <style>
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 3s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</body>
+</html>

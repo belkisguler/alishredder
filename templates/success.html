@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AliShredder Web</title>
+    <link rel="stylesheet" href="\static\styles\styles.css">
+    <script src="\static\assets\script.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="wrapper">
+          <div class="logo"><a href="http://alishredder.cibiv.univie.ac.at">AliShredder Web</a></div>
+          <div class="body-text">a software to measure phylogenetic quality</div>
+          <div class="nav-links"><li><a href="javascript:history.back()">Go Back</a></li></div>
+        </div>
+    </nav>
+
+    {% if error %}
+        <div style="color: red;">{{ error }}</div>
+    {% endif %}
+
+    <div class="stApp">
+        <h2>Your data has been successfully analyzed!</h2>
+        <div class="container">
+            {% set has_plots = plots.get("chart_all") or plots.get("chart_pi") or plots.get("chart_dij") or plots.get("chart_cij") or plots.get("chart_iij") or plots.get("chart_cr") or plots.get("chart_cw") %}
+            {% if has_plots %}
+                <div class="plot-selection">
+                    <div id="plotSelectorContainer">
+                        <label for="plotSelector">Change your visualization:</label>
+                        <select id="plotSelector" onchange="showPlot(this.value)">
+                            <option value="" disabled selected>Select your visualization of choice</option>
+                            {% if plots.get("chart_all") %}
+                                <option value="plot_all">Informative Sites</option>
+                            {% endif %}
+                            {% if plots.get("chart_all_iq") %}
+                                <option value="plot_all_iq">Informative Sites (IQ Tree)</option>
+                            {% endif %}
+                            {% if plots.get("chart_pi") %}
+                                <option value="plot_pi">Informative Sites</option>
+                            {% endif %}
+        
+                            {% if plots.get("chart_cw") %}
+                                <option value="plot_cw">Completeness Score for the window</option>
+                            {% endif %}
+                            {% if plots.get("chart_dij") %}
+                                <option value="plot_dij">Average P-Distance of a sequence against all other sequences</option>
+                            {% endif %}
+                            {% if plots.get("chart_cij") %}
+                                <option value="plot_cij">Average pairwise completeness of a sequence against all other sequences</option>
+                            {% endif %}
+                            {% if plots.get("chart_iij") %}
+                                <option value="plot_iij">Average pairwise incompleteness of a sequence against all other sequences</option>
+                            {% endif %}
+                            {% if plots.get("chart_cr") %}
+                                <option value="plot_cr">Completeness Score for Individual Sequences</option>
+                            {% endif %}                    
+                        </select>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if plots.get("chart_all") %}
+                <div id="plot_all" class="plot-container" style="display: block;">
+                    {{ plots["chart_all"] | safe }}
+                </div>
+            {% endif %}
+
+            {% if plots.get("chart_all_iq") %}
+                <div id="plot_all_iq" class="plot-container" style="display: none;">
+                    {{ plots["chart_all_iq"] | safe }}
+                </div>
+            {% endif %}
+
+            {% if plots.get("chart_pi") %}
+            <div id="plot_pi" class="plot-container" style="display: none;">
+                {{ plots["chart_pi"] | safe }}
+            </div>
+            {% endif %}
+
+            {% if plots.get("chart_dij") %}
+                <div id="plot_dij" class="plot-container" style="display: none;">
+                    {{ plots["chart_dij"] | safe }}
+                </div>
+            {% endif %}
+
+            {% if plots.get("chart_cij") %}
+                <div id="plot_cij" class="plot-container" style="display: none;">
+                    {{ plots["chart_cij"] | safe }}
+                </div>
+            {% endif %}
+
+            {% if plots.get("chart_iij") %}
+                <div id="plot_iij" class="plot-container" style="display: none;">
+                    {{ plots["chart_iij"] | safe }}
+                </div>
+            {% endif %}
+
+            {% if plots.get("chart_cr") %}
+                <div id="plot_cr" class="plot-container" style="display: none;">
+                    {{ plots["chart_cr"] | safe }}
+                </div>
+            {% endif %}
+
+            {% if plots.get("chart_cw") %}
+                <div id="plot_cw" class="plot-container" style="display: none;">
+                    {{ plots["chart_cw"] | safe }}
+                </div>
+            {% endif %}
+
+            {% if log_content %}
+                <div class="section log-section">
+                    <h3>Log Output:</h3>
+                    <pre>{{ log_content }}</pre>
+                </div>
+            {% endif %}
+            <details>
+                <summary>Downloads</summary>
+                <article>
+                    <div class="downloads-section">
+                        {% for filename in created_files %}
+                            <div class="download-link">
+                                <a href="{{ url_for('download_file', unique_identifier=unique_identifier, filename=filename) }}">{{ filename }}</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </article>
+            </details>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,604 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #eeeeee;
+  margin: 0; 
+  padding: 0; 
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+
+/* Header Styles: */
+h3 {
+  font-size: 1.1vw;
+}
+
+
+h2 {
+  margin: 0;
+  font-size: 1.5vw;
+  text-align: center;
+  padding: 1vw 1vw 1vw 1vw;
+  
+}
+
+h4 {
+  margin: 1vw 1vw 0vw 5vw;
+  padding: 0vw;
+  font-size: 1.3vw;
+  text-align: right;
+  padding-bottom: 0vw;
+  margin-left: 0vw;
+}
+
+h1 {
+  margin: 0;
+  padding: 2vw;
+}
+
+/* Nav: */
+
+nav{
+  background: #242526;
+}
+nav .wrapper{
+  position: relative;
+  max-width: 100%;
+  height: 8vh; 
+  align-items: center;
+  display: flex;
+  padding-top: 0.5vh;
+}
+
+/* Logo Style: */
+.wrapper .logo a {
+font-size: 1.6vw;
+text-decoration: none;
+color: #f2f2f2;
+font-weight: 600;
+margin: 0vw 0vw 0vw 3vw;
+white-space: nowrap;
+max width: 100%;
+}
+
+/* Body-Text: */
+.body-text {
+color: #f2f2f2;
+font-size: 0.9vw; 
+text-decoration: none;
+white-space: nowrap;
+position: relative;
+padding: 0vw 0vw 0vw 0vw;
+margin: 0vw 0vw 0vw 0.8vw;
+max width: 100%;
+}
+
+
+/* Nav-Links: */
+.wrapper .nav-links{
+  position: relative;
+  display: inline-flex;
+  align-items: center; 
+  justify-content: space-between; 
+  white-space: nowrap;
+}
+.nav-links li {
+  margin-right: 60vw; 
+}
+.nav-links li a{
+  color: #f2f2f2;
+  text-decoration: none;
+  font-size: 1vw;
+  font-weight: 500;
+  padding: 0.9vw 1.3vw;
+  margin-right: 3vw;
+  margin-left: 56vw;
+  border-radius: 0.5vw;
+  transition: all 0.3s ease;
+}
+.nav-links li a:hover{
+  background: #3A3B3C;
+}
+
+
+/* stApp: */
+.stApp {
+  background-color: #eeeeee;
+  color: #333;
+  padding-top: 1%;
+  max-width: 100%;
+}
+
+.container {
+width: 95%; 
+margin: auto;
+background-color: #fff;
+padding: 1em;
+border-radius: 1vh; 
+box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
+max-width: 100%;
+}
+
+.input-section {
+  text-align: left;
+  padding: 2%;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  max width: 100%;
+}
+
+form {
+text-align: left;
+white-space: nowrap;
+position: relative;
+overflow: hidden;
+}
+
+/* Upload Section Styles: */ 
+.upload-section {
+  margin: 0vh;
+  padding: 1vh 1vh 1vh 1vh;
+  position: relative;
+  max-width: 100%; 
+}
+
+.upload-box {
+  position: relative;
+  align-items: center; 
+  display: left; 
+  justify-content: center; 
+  transform: translateY(-10%);
+  padding: 1.3vw 0vw 1.3vw 1.3vw; 
+  background: rgb(223, 223, 223);
+  border-radius: 1vw;
+  cursor: pointer;
+  box-shadow: 0 0 0.5rem hsl(0 0% 0% / 15%);
+  width: calc(1.1vw * 40);
+  height: 0.5vh; 
+  max-width: 100%; 
+}
+
+.inner-upload-box {
+  position: absolute; 
+  background-color: #242526;
+  color: white;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  border-radius: 1vw;
+  width: 8vw; 
+  height: 0.5vh;
+  padding: 1.3vw 0vw 1.3vw 0vw; 
+  right: 0; 
+  top: 50%; 
+  transform: translateY(-50%); 
+}
+
+.inner-upload-box p {
+  font-size: 0.8vw; 
+}
+
+.file-input {
+  display: none;
+}
+
+.file-label {
+  font-size: 1vw; 
+  cursor: pointer;
+  position: relative;
+  transform: translateY(-50%);
+}
+
+.file-name {
+  margin-top: 1vh; 
+}
+/* Analysis Options Section:  */
+
+.options-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2vh;
+  position: relative;
+  max-width: 100%; 
+}
+
+.options-table {
+  flex-basis: 50%; 
+  border: 0.01vw solid #ccc;
+  padding: 1vw;
+  margin-bottom: 2vh;
+  padding-bottom: 2vh;
+  box-sizing: border-box; 
+}
+
+.checkbox-wrapper-4 * {
+  box-sizing: border-box;
+  color: black;
+  display: inline-flex; 
+  align-items: center; 
+}
+
+.checkbox-wrapper-4 .cbx {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  padding: 0.2vw 0.2vw;
+  border-radius: 0.6vw;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.checkbox-wrapper-4 .cbx:not(:last-child) {
+  margin-right: 0vw;
+}
+
+.checkbox-wrapper-4 .cbx:hover {
+  background: EEEDEB;
+}
+
+.checkbox-wrapper-4 .cbx span {
+  font-size: 1vw;
+  float: left;
+  vertical-align: middle;
+  transform: translate3d(0, 0, 0);
+  display: inline-block;
+  
+}
+.checkbox-wrapper-4 .cbx span:first-child {
+    position: relative;
+    width: 1vw;
+    height: 1vw;
+    border-radius: 0.25vw;
+    transform: scale(1);
+    border: 1px solid #E6E6E6;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 1px #E6E6E6;
+    margin-right: 0vw;
+}
+
+.checkbox-wrapper-4 .cbx span:last-child {
+    padding-left: 0.8vw;
+    line-height: 1.2vw;
+    display: inline-block;
+}
+
+.checkbox-wrapper-4 .cbx:hover span:first-child {
+    border-color: #242526;
+}
+
+.checkbox-wrapper-4 .inp-cbx {
+  position: absolute;
+  visibility: hidden;
+}
+
+.checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child {
+  background: #242526;
+  border-color: #242526;
+  animation: wave-4 0.4s ease;
+}
+
+.checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child svg {
+  stroke-dashoffset: 0;
+}
+
+.checkbox-wrapper-4 .inline-svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+
+.checkbox-wrapper-4 label {
+  display: flex;
+  align-items: center;
+  margin-right: 1vw;
+}
+
+.checkbox-wrapper-4 input[type="number"],
+.checkbox-wrapper-4 input[type="text"] {
+width: 40%; 
+height: 3%;
+display: inline-block;
+position: relative;
+align-items: center; 
+padding: 0.5vw 1vw;
+border-radius: 8vw;
+border: 0.1vw solid #E6E6E6;
+transform: translateY(-42%); 
+}
+
+.checkbox-wrapper-4 input[type="number"]:focus,
+.checkbox-wrapper-4 input[type="text"]:focus {
+border-color: #E6E6E6; 
+outline: none; 
+}
+
+/* Info Icon für Index Page: */
+.info-icon {
+display: none;
+}
+
+
+.info-icon:hover {
+display: inline-block;
+cursor: pointer;
+
+} 
+.checkbox-wrapper-4:hover .info-icon {
+  display: inline-block; 
+  border: 0.3vw solid #f1f1f1;
+  background-color: #f1f1f1;
+  border-radius: 1vw;
+  box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  font-size: 0.75vw; 
+  max-width: calc(100% - 2vw); 
+  white-space: nowrap; 
+  padding: 0.2vw;
+  margin-left: 0.2vw;
+  transform: translateY(-42%); 
+}
+
+
+label {
+display: block;
+margin-bottom: 0.5vh;
+}
+
+input[type="submit"] {
+  display: block;
+  align-items: center; 
+  justify-content: center; 
+  margin: auto;
+  background-color: #242526;
+  color: #fff;
+  cursor: pointer;
+  width: 15%;
+  padding: 1vw;
+  border: none;
+  border-radius: 1vw;
+  font-size: 1vw;
+  font-weight:bolder;
+}
+
+
+/* Upload Button styles:  */
+
+.upload-container {
+width: 100%;
+display: flex;
+}
+
+.card {
+border-radius: 10px;
+box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+width: 100%;
+height: 80px;
+background-color: #ffffff;
+padding: 10px 50px 0px;
+margin: 10px 10px 30px;
+}
+
+
+.custom-file-input {
+width: auto; 
+height: 50px;
+background-color: transparent;
+color: black;
+border: none;
+outline: round;
+margin: 10px -40px 10px;
+padding: 10px 29px;
+}
+
+
+/* Plot Container in Success Page */ 
+.label {
+  margin-bottom: 0;
+}
+
+.checkbox-container {
+  box-sizing: border-box;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.input-field-container {
+  margin-bottom: 5px;
+  padding-left: 5px;
+}
+
+/* Plot Selection Dropdown:  */ 
+.plot-selection {
+padding: 10px;
+margin-bottom: 20px; 
+}
+
+.plot-selection .plot-container{
+width: 100%;
+max-width: 100%;
+padding-top: 1.5%;
+max-height: 100%;
+}
+
+button {
+color: #090909;
+padding: 0.7em 1.7em;
+font-size: 18px;
+border-radius: 0.1em;
+background: #f3f0f0;
+border: 1px solid #f3f0f0;
+transition: all .3s;
+box-shadow: 6px 6px 12px #c5c5c5,
+            -6px -6px 12px #ffffff;
+}
+
+button:active {
+color: #666;
+box-shadow: inset 4px 4px 12px #c5c5c5,
+            inset -4px -4px 12px #ffffff;
+}
+
+/* Dropdown:  */ 
+details:hover {
+background: #ffffff;
+}
+
+details[open] > summary {
+border-bottom: 0vw solid #ffffff;
+}
+
+details[open] > summary {color: #090909;}
+
+summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vw 1vw;
+  margin-top: 1vh;
+  font-weight: bold;
+}
+
+summary::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-inline: solid transparent;
+}
+
+summary {
+border-radius: 5px;
+color: #15171b;
+}
+
+details {
+  background: #ffffff;
+  border-radius: 1vw;
+  box-shadow: 0 2vw 2.5vw -5vw rgba(0, 0, 0, 0.1), 0 1vw 1vw -5vw rgba(0, 0, 0, 0.04);
+}
+
+details:hover {
+  border: 0.5vw #ccc;
+  border-radius: 0.8vw;
+  width: 100%;
+  appearance: none; 
+  background: rgb(247, 244, 244);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+details[open] > summary {
+  border-bottom:  0vw solid #ffffff;
+  border-radius: 5px 5px 0 0;
+}
+
+details[open] > summary {color: #090909;}
+
+
+
+/* CSS styles for label */
+label {
+margin-bottom: 5px;
+font-size: 25px;;
+}
+
+/* CSS styles for select */
+select {
+padding: 1vh;
+border: 1px solid #ccc;
+width: 23%;
+font-size: 17px;
+background: rgb(247, 244, 244);
+cursor: pointer;
+transition: background 0.3s;
+border-radius: 0.5em;
+}
+
+/* CSS styles for options */
+option {
+padding: 1pvh;
+font-size: 18px bold;
+cursor: pointer; 
+}
+
+/* CSS styles for option hover */
+option:hover {
+background-color: #f1f1f1;
+}
+
+option:focus {
+outline: none; 
+background-color: #e5e4e4; 
+}
+
+select:hover {
+background-color: #fff; 
+}
+
+/* CSS styles for download-selection class */
+.download-selection {
+border: 1vw solid #ccc;
+border-radius: 0.5vw;
+padding: 1vh;
+margin-bottom: 0.2vw; /* Adjust margin as needed */
+}
+
+
+ /* Download Section Styles: */
+.downloads-section a {
+    color: #000;
+    text-decoration: underline;
+    margin-left: 1.5vw;
+}
+
+/* CSS styles for downloadSelectorContainer class */
+#downloadSelectorContainer {
+display: right;
+flex-direction: column;
+}
+
+/* CSS styles for label */
+label {
+margin-bottom: 0.5vh;
+}
+
+/* CSS styles for select */
+select {
+padding: 5px;
+border: 1px solid #ccc;
+border-radius: 3px;
+width: 100%;
+appearance: none; /* Remove default appearance */
+}
+
+/* CSS styles for options */
+option {
+padding: 5px;
+cursor: pointer; /* Show cursor as pointer */
+}
+
+/* CSS styles for option hover */
+option:hover {
+background-color: #f1f1f1;
+}
+
+/* CSS styles for option:focus */
+option:focus {
+outline: none; /* Remove default focus outline */
+background-color: #ccc; /* Change background color when focused */
+}
+
+/* CSS styles for select hover */
+select:hover {
+background-color: #fff; /* Override default hover color */
+}
