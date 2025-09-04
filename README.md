@@ -1,4 +1,4 @@
-# AliShredder Web 
+# AliShredder Web | a software to measure phylogenetic quality
 
 The AliShredder web interface facilitates the analysis of biological sequence data through a user-friendly web interface. It allows users to upload sequence files, which are then processed using the AliShredder software [2] for analysis. The application is built using Flask [3], a Python web framework, and incorporates various technologies for file handling, data processing, and visualization.
 
